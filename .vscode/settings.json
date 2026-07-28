@@ -1,10 +1,10 @@
 {
-  "tailwindCSS.experimental.configFile": "packages/client/src/index.css",
-  "tailwindCSS.includeLanguages": {
-    "typescriptreact": "html",
-    "javascriptreact": "html"
-  },
-  "editor.quickSuggestions": {
-    "strings": "on"
-  }
+   "tailwindCSS.experimental.configFile": "packages/client/src/index.css",
+   "tailwindCSS.includeLanguages": {
+      "typescriptreact": "html",
+      "javascriptreact": "html"
+   },
+   "editor.quickSuggestions": {
+      "strings": "on"
+   }
 }
