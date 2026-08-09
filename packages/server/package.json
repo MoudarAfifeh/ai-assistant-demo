@@ -9,14 +9,20 @@
    },
    "devDependencies": {
       "@types/bun": "latest",
-      "@types/express": "^5.0.6"
+      "@types/express": "^5.0.6",
+      "prisma": "^7.9.1"
    },
    "peerDependencies": {
       "typescript": "^5"
    },
    "dependencies": {
+      "@huggingface/inference": "^4.13.25",
+      "@prisma/adapter-mariadb": "^7.9.1",
+      "@prisma/client": "^7.9.1",
+      "dayjs": "^1.11.21",
       "dotenv": "^17.4.2",
       "express": "^5.2.1",
+      "ollama": "^0.6.3",
       "openai": "^7.1.0",
       "zod": "^4.4.3"
    }
