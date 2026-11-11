@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import fs from 'fs';
+import tls from 'tls';
 import { PrismaMariaDb } from '@prisma/adapter-mariadb';
 import { PrismaClient } from './generated/prisma/client';
 
@@ -25,6 +26,15 @@ function sslOptions() {
          connection.searchParams.get('sslaccept') !== 'accept_invalid_certs',
       // Without this the driver verifies the cert against "localhost".
       servername: connection.hostname,
+      // The driver re-checks the hostname after the handshake using
+      // getPeerCertificate(). Bun returns an empty object there, so that
+      // re-check always fails under Bun. The TLS handshake has already
+      // verified the CA and hostname (rejectUnauthorized + servername), so
+      // only skip the re-check when there is no certificate data to check.
+      checkServerIdentity: (host: string, cert: tls.PeerCertificate) =>
+         cert && Object.keys(cert).length
+            ? tls.checkServerIdentity(host, cert)
+            : undefined,
    };
 }
 

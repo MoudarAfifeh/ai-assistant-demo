@@ -7,19 +7,19 @@
 
 */
 -- DropForeignKey
-ALTER TABLE `review` DROP FOREIGN KEY `Review_productId_fkey`;
+ALTER TABLE `Review` DROP FOREIGN KEY `Review_productId_fkey`;
 
 -- DropForeignKey
-ALTER TABLE `summary` DROP FOREIGN KEY `Summary_productId_fkey`;
+ALTER TABLE `Summary` DROP FOREIGN KEY `Summary_productId_fkey`;
 
 -- DropTable
-DROP TABLE `product`;
+DROP TABLE `Product`;
 
 -- DropTable
-DROP TABLE `review`;
+DROP TABLE `Review`;
 
 -- DropTable
-DROP TABLE `summary`;
+DROP TABLE `Summary`;
 
 -- CreateTable
 CREATE TABLE `products` (
