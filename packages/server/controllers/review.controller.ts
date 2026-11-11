@@ -4,6 +4,15 @@ import { productRepository } from '../repositories/product.repository';
 import { reviewRepository } from '../repositories/review.repository';
 
 export const reviewController = {
+   async getProducts(req: Request, res: Response) {
+      const products = await productRepository.getProducts();
+      res.json(
+         products.map(({ _count, ...product }) => ({
+            ...product,
+            reviewCount: _count.reviews,
+         }))
+      );
+   },
    async getReviews(req: Request, res: Response) {
       const productId = Number(req.params.id);
       if (isNaN(productId)) {

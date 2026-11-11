@@ -15,7 +15,18 @@ export type SummarizeResponse = {
    summary: string;
 };
 
+export type Product = {
+   id: number;
+   name: string;
+   description: string | null;
+   price: number;
+   reviewCount: number;
+};
+
 export const reviewsApi = {
+   fetchProducts() {
+      return axios.get<Product[]>('/api/products').then((res) => res.data);
+   },
    fetchReviews(productId: number) {
       return axios
          .get<GetReviewResponse>(`/api/products/${productId}/reviews`)

@@ -38,15 +38,25 @@ function ReviewList({ productId }: Props) {
       );
    }
    if (!reviewsQuery.data?.reviews.length) {
-      return null;
+      return (
+         <p className="text-muted-foreground">
+            This product has no reviews yet, so there is nothing to summarize.
+         </p>
+      );
    }
    const currentSummary =
       reviewsQuery.data?.summary || summryMutation.data?.summary;
    return (
       <div>
-         <div className="mb-5">
+         <div className="mb-6">
             {currentSummary ? (
-               <p>{currentSummary}</p>
+               <div className="rounded-xl border border-violet-200 bg-violet-50 p-4">
+                  <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-violet-700">
+                     <HiSparkles />
+                     AI summary
+                  </div>
+                  <p className="text-gray-800">{currentSummary}</p>
+               </div>
             ) : (
                <div>
                   <Button
@@ -72,7 +82,7 @@ function ReviewList({ productId }: Props) {
          </div>
          <div className="flex flex-col gap-5">
             {reviewsQuery.data?.reviews.map((review) => (
-               <div key={review.id}>
+               <div key={review.id} className="border-b pb-4 last:border-0">
                   <div className=" font-semibold">{review.author}</div>
                   <div>
                      <StarRating value={review.rating} />
