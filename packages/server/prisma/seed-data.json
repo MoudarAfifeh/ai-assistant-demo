@@ -1,0 +1,141 @@
+[
+  {
+    "id": 1,
+    "name": "Aurora Wireless Noise Cancelling Headphones",
+    "description": "Premium over-ear wireless headphones featuring adaptive noise cancellation, high-resolution audio, long battery life, and a comfortable ergonomic design for travel and everyday listening.",
+    "price": 249.99,
+    "reviews": [
+      {
+        "author": "Emily Carter",
+        "rating": 5,
+        "content": "These headphones exceeded my expectations. The noise cancellation is excellent, especially when I use them on flights and in busy coffee shops. The sound quality is rich with clear vocals and deep bass without feeling overwhelming. I also appreciate how comfortable the ear cushions are because I can wear them for several hours while working. The battery lasts much longer than my previous headphones, and the wireless connection has been reliable every day."
+      },
+      {
+        "author": "Michael Thompson",
+        "rating": 4,
+        "content": "I bought these headphones mainly for commuting and remote work, and they have been a great upgrade. The microphone quality is good for meetings, and the noise cancellation helps me stay focused in a noisy apartment. The only minor issue is that the carrying case feels slightly bulky, but the overall build quality and audio performance make this a worthwhile purchase."
+      },
+      {
+        "author": "Sarah Williams",
+        "rating": 5,
+        "content": "The Aurora headphones are fantastic for music lovers. I noticed details in my favorite songs that I had never heard before. The controls are easy to use, the design feels premium, and the headphones do not cause discomfort even after long listening sessions. They are also stylish enough to use at work without looking too flashy."
+      },
+      {
+        "author": "Daniel Brooks",
+        "rating": 4,
+        "content": "This is a very solid pair of headphones for the price. The sound profile is balanced and works well for podcasts, movies, and music. The Bluetooth range is impressive, and switching between devices is simple. I would have liked a few more customization options in the companion app, but overall I am very satisfied."
+      },
+      {
+        "author": "Olivia Martinez",
+        "rating": 5,
+        "content": "I travel frequently and these headphones have become one of my essential items. The airplane noise reduction is excellent, and the long battery life means I rarely need to recharge them during trips. They are comfortable, durable, and provide a premium listening experience that makes long journeys much more enjoyable."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "BrewMaster Stainless Steel Coffee Maker",
+    "description": "Programmable stainless steel coffee machine with temperature control, reusable filter system, and a large capacity reservoir designed for home coffee enthusiasts.",
+    "price": 129.5,
+    "reviews": [
+      {
+        "author": "James Anderson",
+        "rating": 5,
+        "content": "The BrewMaster coffee maker has completely improved my morning routine. The coffee tastes much better than what I was making with my old machine, and the temperature control helps bring out more flavor from different types of beans. The programmable timer is convenient because I can wake up to freshly brewed coffee every day. Cleaning the machine is also straightforward."
+      },
+      {
+        "author": "Sophia Wilson",
+        "rating": 4,
+        "content": "I have been using this coffee maker for several months and it has performed very well. The stainless steel design looks great in my kitchen, and the large water reservoir is perfect for making multiple cups when guests visit. The only reason I did not give five stars is that the brewing cycle is a little slower than expected, but the quality of the coffee makes up for it."
+      },
+      {
+        "author": "Robert Davis",
+        "rating": 5,
+        "content": "As someone who drinks coffee several times a day, this machine has been a great investment. The flavor consistency is impressive, and the reusable filter saves money compared with disposable options. The controls are intuitive, and the machine feels sturdy and well made. It feels like a professional coffee setup at home."
+      },
+      {
+        "author": "Emma Johnson",
+        "rating": 4,
+        "content": "This coffee maker delivers excellent results and looks attractive on the countertop. I especially like the ability to schedule brewing ahead of time. The coffee stays hot for a good amount of time, and the cleaning process is manageable. I wish the instruction manual had more detailed tips for first-time users, but the machine itself works wonderfully."
+      },
+      {
+        "author": "William Taylor",
+        "rating": 5,
+        "content": "I purchased this coffee maker after upgrading from a basic model, and the difference is noticeable. The brewing temperature and consistency are excellent, and every cup tastes fresh. It is quiet, reliable, and has enough capacity for my entire family in the morning. Highly recommended for anyone who takes coffee seriously."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "TrailPro Waterproof Hiking Backpack",
+    "description": "Durable 40-liter waterproof hiking backpack with reinforced stitching, padded straps, multiple compartments, and weather-resistant materials for outdoor adventures.",
+    "price": 89.95,
+    "reviews": [
+      {
+        "author": "Jessica Brown",
+        "rating": 5,
+        "content": "The TrailPro backpack is perfect for weekend hiking trips. The waterproof material kept my gear completely dry during heavy rain, and the storage compartments make organizing equipment very easy. The shoulder straps are comfortable even when carrying heavier loads, and the overall construction feels extremely durable. This backpack has quickly become my favorite outdoor gear purchase."
+      },
+      {
+        "author": "Christopher Lee",
+        "rating": 4,
+        "content": "I used this backpack on a three-day hiking trip and it performed very well. The capacity is excellent, and the different pockets make it easy to separate clothing, food, and electronics. The padding provides good support, although I think the waist strap could be improved for longer hikes. Overall, it is a reliable and comfortable backpack."
+      },
+      {
+        "author": "Amanda Wilson",
+        "rating": 5,
+        "content": "This backpack exceeded my expectations for outdoor use. The waterproof protection works exactly as advertised, and the materials feel like they can handle rough conditions. I appreciate the thoughtful design with easy-access pockets and strong zippers. It is comfortable enough for long walks and spacious enough for all my hiking essentials."
+      },
+      {
+        "author": "Matthew Harris",
+        "rating": 4,
+        "content": "The TrailPro backpack is a great choice for casual hikers and travelers. It has plenty of room and feels much more durable than cheaper alternatives I have owned. The design is practical, and the straps distribute weight well. I would prefer slightly more ventilation on the back panel, but otherwise it is an excellent backpack."
+      },
+      {
+        "author": "Lauren Clark",
+        "rating": 5,
+        "content": "I bought this backpack for a camping trip and was impressed by the quality. It survived rough handling, unexpected rain, and a lot of outdoor use without any problems. The compartments are well designed, and the waterproof feature gave me peace of mind. It is a dependable backpack that I plan to use for years."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "LumaSmart LED Desk Lamp",
+    "description": "Modern adjustable LED desk lamp with touch controls, multiple brightness levels, color temperature adjustment, and USB charging port for home and office use.",
+    "price": 59.99,
+    "reviews": [
+      {
+        "author": "David Wilson",
+        "rating": 5,
+        "content": "The LumaSmart desk lamp has made my home office much more comfortable. The adjustable brightness levels are perfect for different tasks, from reading to video calls. I really like being able to change the color temperature because warmer light helps me relax while cooler light keeps me focused. The USB charging port is also a useful addition."
+      },
+      {
+        "author": "Rachel Adams",
+        "rating": 4,
+        "content": "This lamp has a sleek design and takes up very little desk space. The touch controls respond quickly, and the adjustable arm makes it easy to position the light exactly where I need it. The brightness range is excellent. My only complaint is that the charging port placement could be more convenient, but it is still a great desk accessory."
+      },
+      {
+        "author": "Kevin Martin",
+        "rating": 5,
+        "content": "I use this lamp every day while working and studying. The light quality is comfortable and does not strain my eyes during long sessions. The different lighting modes are useful depending on the time of day, and the build quality feels much better than typical desk lamps. It is a simple product that has improved my workspace."
+      },
+      {
+        "author": "Natalie Scott",
+        "rating": 4,
+        "content": "The LumaSmart lamp is stylish, functional, and easy to use. I especially like the memory feature that keeps my preferred brightness setting. The adjustable design allows me to share the light between my desk and nearby reading area. It would be perfect if the base were slightly heavier, but it remains stable for normal use."
+      },
+      {
+        "author": "Andrew Moore",
+        "rating": 5,
+        "content": "This lamp is exactly what I needed for my study desk. The lighting options are excellent, and the controls feel modern and convenient. The USB port allows me to charge my phone without needing another adapter. The design looks professional, and it provides enough brightness for detailed work without being harsh."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "ChefCraft Professional Kitchen Knife Set",
+    "description": "High-quality kitchen knife collection featuring stainless steel blades, ergonomic handles, and precision cutting performance for professional and home cooking.",
+    "price": 179,
+    "reviews": []
+  }
+]

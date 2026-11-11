@@ -1,0 +1,30 @@
+{
+   "$schema": "https://openapi.vercel.sh/vercel.json",
+   "services": {
+      "client": {
+         "root": "packages/client",
+         "framework": "vite"
+      },
+      "server": {
+         "root": "packages/server",
+         "framework": "express",
+         "entrypoint": "index.ts",
+         "buildCommand": "prisma generate",
+         "functions": {
+            "index.ts": {
+               "includeFiles": "{prisma/ca.pem,llm/prompts/**}"
+            }
+         }
+      }
+   },
+   "rewrites": [
+      {
+         "source": "/api/(.*)",
+         "destination": { "service": "server" }
+      },
+      {
+         "source": "/(.*)",
+         "destination": { "service": "client" }
+      }
+   ]
+}

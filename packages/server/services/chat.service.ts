@@ -1,11 +1,15 @@
 import fs from 'fs';
-import path from 'path';
 import { coversationRepository } from '../repositories/conversation.repository';
-import template from '../llm/prompts/chatbot.txt';
 import { llmClient } from '../llm/client';
 
+// Read prompts with fs + import.meta.url so this works on Bun locally and
+// on Node.js (Vercel), and so Vercel's file tracing bundles these files.
+const template = fs.readFileSync(
+   new URL('../llm/prompts/chatbot.txt', import.meta.url),
+   'utf-8'
+);
 const parkInfo = fs.readFileSync(
-   path.join(__dirname, '..', 'llm', 'prompts', 'WonderWorld.md'),
+   new URL('../llm/prompts/WonderWorld.md', import.meta.url),
    'utf-8'
 );
 

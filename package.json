@@ -21,6 +21,9 @@
   "workspaces": [
     "packages/*"
   ],
+  "overrides": {
+    "mariadb": "3.5.5"
+  },
   "dependencies": {
     "@tanstack/react-query": "^5.101.4",
     "react-loading-skeleton": "^3.5.0"
