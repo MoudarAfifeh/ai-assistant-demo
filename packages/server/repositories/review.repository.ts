@@ -6,7 +6,7 @@ export const reviewRepository = {
    async getReviews(productId: number, limit?: number): Promise<Review[]> {
       return prisma.review.findMany({
          where: { productId },
-         orderBy: { createAt: 'desc' },
+         orderBy: { createdAt: 'desc' },
          take: limit,
       });
    },
