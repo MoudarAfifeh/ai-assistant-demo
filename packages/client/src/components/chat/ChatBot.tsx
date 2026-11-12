@@ -5,6 +5,7 @@ import type { Message } from './ChatMessages';
 import ChatMessages from './ChatMessages';
 import ChatInput, { type ChatFormData } from './ChatInput';
 import TypingIndicator from './TypingIndicator';
+import { getApiError, type ApiErrorInfo } from '@/lib/apiError';
 import popSound from '@/assets/sounds/pop.mp3';
 import notificationSound from '@/assets/sounds/notification.mp3';
 
@@ -28,13 +29,13 @@ const ChatBot = () => {
 
    const [messages, setMessages] = useState<Message[]>([]);
    const [isBotTyping, setIsBotTyping] = useState(false);
-   const [error, setError] = useState('');
+   const [error, setError] = useState<ApiErrorInfo | null>(null);
 
    const onSubmit = async ({ prompt }: ChatFormData) => {
       try {
          setMessages((prev) => [...prev, { content: prompt, role: 'user' }]);
          setIsBotTyping(true);
-         setError('');
+         setError(null);
          popAudio.play();
          const { data } = await axios.post<ChatResponse>('/api/chat', {
             prompt,
@@ -47,7 +48,7 @@ const ChatBot = () => {
          notificationAudio.play();
       } catch (error) {
          //sentry -> package to login the error
-         setError('Something wrong, try again!');
+         setError(getApiError(error, 'Something wrong, try again!'));
       } finally {
          setIsBotTyping(false);
       }
@@ -80,7 +81,15 @@ const ChatBot = () => {
             )}
             <ChatMessages messages={messages} />
             {isBotTyping && <TypingIndicator />}
-            {error && <p className=" text-red-500">{error}</p>}
+            {error && (
+               <p
+                  className={
+                     error.isRateLimited ? 'text-amber-600' : 'text-red-500'
+                  }
+               >
+                  {error.message}
+               </p>
+            )}
          </div>
          <ChatInput onSubmit={onSubmit} />
       </div>

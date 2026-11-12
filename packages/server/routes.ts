@@ -2,6 +2,7 @@ import express from 'express';
 import type { Request, Response } from 'express';
 import { chatController } from './controllers/chat.controller';
 import { reviewController } from './controllers/review.controller';
+import { chatRateLimit, summarizeRateLimit } from './middleware/rateLimit';
 
 const router = express.Router();
 
@@ -13,7 +14,7 @@ router.get('/api/hello', (req: Request, res: Response) => {
       message: 'Hello world!',
    });
 });
-router.post('/api/chat', chatController.sendMessage);
+router.post('/api/chat', chatRateLimit, chatController.sendMessage);
 
 router.get('/api/products', reviewController.getProducts);
 
@@ -21,6 +22,7 @@ router.get('/api/products/:id/reviews', reviewController.getReviews);
 
 router.post(
    '/api/products/:id/reviews/summarize',
+   summarizeRateLimit,
    reviewController.summarizeReviews
 );
 

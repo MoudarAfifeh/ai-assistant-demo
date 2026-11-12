@@ -9,6 +9,7 @@ import {
    type GetReviewResponse,
    type SummarizeResponse,
 } from './reviewsApi';
+import { getApiError } from '@/lib/apiError';
 
 type Props = {
    productId: number;
@@ -46,6 +47,12 @@ function ReviewList({ productId }: Props) {
    }
    const currentSummary =
       reviewsQuery.data?.summary || summryMutation.data?.summary;
+   const summaryError = summryMutation.isError
+      ? getApiError(
+           summryMutation.error,
+           'Could not summarize reviews. Try again!'
+        )
+      : null;
    return (
       <div>
          <div className="mb-6">
@@ -72,9 +79,15 @@ function ReviewList({ productId }: Props) {
                         <ReviewSkeleton />
                      </div>
                   )}
-                  {summryMutation.isError && (
-                     <p className=" text-red-500">
-                        Could not summarize reviews. Try again!
+                  {summaryError && (
+                     <p
+                        className={
+                           summaryError.isRateLimited
+                              ? 'text-amber-600'
+                              : 'text-red-500'
+                        }
+                     >
+                        {summaryError.message}
                      </p>
                   )}
                </div>
