@@ -1,5 +1,4 @@
 import OpenAI from 'openai';
-import { InferenceClient } from '@huggingface/inference';
 import fs from 'fs';
 import { Ollama } from 'ollama';
 
@@ -7,8 +6,6 @@ const summarizePrompt = fs.readFileSync(
    new URL('./prompts/summarize-reviews.txt', import.meta.url),
    'utf-8'
 );
-
-const inferenceClient = new InferenceClient(process.env.HF_TOKEN);
 
 const openAiClient = new OpenAI({
    apiKey: process.env.OPENAI_API_KEY,

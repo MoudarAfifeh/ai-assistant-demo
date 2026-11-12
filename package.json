@@ -1,10 +1,9 @@
 {
   "name": "my-app",
-  "module": "index.ts",
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "bun run index.ts",
+    "dev": "concurrently --names server,client --prefix-colors cyan,green \"bun run --cwd packages/server dev\" \"bun run --cwd packages/client dev\"",
     "format": "prettier --write .",
     "prepare": "husky"
   },

@@ -58,7 +58,6 @@
     "packages/server": {
       "name": "server",
       "dependencies": {
-        "@huggingface/inference": "^4.13.25",
         "@prisma/adapter-mariadb": "^7.9.1",
         "@prisma/client": "^7.9.1",
         "dayjs": "^1.11.21",
@@ -187,12 +186,6 @@
     "@fontsource-variable/geist": ["@fontsource-variable/geist@5.3.0", "", {}, "sha512-j0m+vLQuG5XAYoHtGCVu0spvlGreR3EzpECUVzkFmI1mTVnAO38l/NEPDCFgZ177JxzYJCLSmTQibIiYPilGrA=="],
 
     "@hono/node-server": ["@hono/node-server@2.0.12", "", { "peerDependencies": { "hono": "^4" } }, "sha512-eWpQYr67tqJLeaSUl0Q+TquuYfUdTibpOJlUMV2FfUP7+KqCC5TufnwnlXL6mobZBJbGAYRd7ZvEBDCbLInjhg=="],
-
-    "@huggingface/inference": ["@huggingface/inference@4.13.25", "", { "dependencies": { "@huggingface/jinja": "^0.5.9", "@huggingface/tasks": "^0.21.33" } }, "sha512-mvInbt5NijSlH9mMT4ese3TnPWHmTUlfW7RpNN81QJNjbrYs3DntYcGY+Bd/OsdJb3ggpTsf1Bsoui7Nk0+bAw=="],
-
-    "@huggingface/jinja": ["@huggingface/jinja@0.5.9", "", {}, "sha512-uWTG+l3VJRsl7EXxYizuL3P+cCPoc3cRqbWWRcQN0FhejRfbdq0RNhCmbY/YDtnTcz9icdLYuLDjsnz4d8JMuw=="],
-
-    "@huggingface/tasks": ["@huggingface/tasks@0.21.33", "", {}, "sha512-efQa8g+WjPwzlwk7Wl4eDgbM1Jq+WooUw/b1+eKl2LVUdPMhnbwsFNMJJxhEywaLJvJBy93+jjna6855U9GePw=="],
 
     "@humanfs/core": ["@humanfs/core@0.19.2", "", { "dependencies": { "@humanfs/types": "^0.15.0" } }, "sha512-UhXNm+CFMWcbChXywFwkmhqjs3PRCmcSa/hfBgLIb7oQ5HNb1wS0icWsGtSAUNgefHeI+eBrA8I1fxmbHsGdvA=="],
 
