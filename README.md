@@ -20,7 +20,7 @@ A full-stack TypeScript app with two production-style LLM features: a **customer
 A support bot for **WonderWorld**, a fictional theme park.
 
 - Uses the **OpenAI Responses API** (`gpt-4o-mini`, temperature 0.2).
-- **Conversation memory:** each response's ID is stored per conversation and sent back as `previous_response_id`, so OpenAI keeps the context server-side and the client only sends the new message.
+- **Conversation memory:** each response's ID is stored per conversation in a MySQL `conversations` table and sent back as `previous_response_id`, so OpenAI keeps the context server-side and the client only sends the new message. Because the server keeps no state in memory, memory survives restarts and works across Vercel serverless instances.
 - **Prompt templates:** the system instructions come from `llm/prompts/chatbot.txt`, with the park's information (`WonderWorld.md`) filled into the `{{parkInfo}}` placeholder. The bot only answers questions about the park.
 - **Input validation:** Zod checks the request (prompt is 1–1000 characters after trimming; `conversationId` must be a UUID).
 - **UI:** suggested questions, a typing indicator, Markdown rendering of replies, and sound effects.
@@ -54,8 +54,7 @@ flowchart LR
     C -->|"product/review lookups"| Repo
     S --> Repo["repositories"]
     Repo --> P["Prisma Client<br/>(MariaDB adapter)"]
-    P --> DB[("MySQL")]
-    Repo --> M["in-memory Map<br/>(chat response IDs)"]
+    P --> DB[("MySQL<br/>products · reviews ·<br/>summaries · conversations")]
     S --> L["llm/client.ts"]
     L --> OAI["OpenAI<br/>Responses API"]
     L -.->|"OLLAMA_HOST set"| OL["Ollama<br/>(tinyllama)"]
@@ -73,7 +72,7 @@ flowchart LR
 │   └── server/                 # Express API
 │       ├── controllers/        # HTTP layer: parse, validate, respond
 │       ├── services/           # business logic (chat, summaries + cache)
-│       ├── repositories/       # data access (Prisma, conversation store)
+│       ├── repositories/       # data access via Prisma (products, reviews, summaries, conversations)
 │       ├── llm/                # OpenAI/Ollama client + prompt files
 │       ├── prisma/             # schema, migrations, seed, CA certificate
 │       ├── prisma.ts           # Prisma client + MariaDB SSL setup
@@ -101,6 +100,7 @@ flowchart LR
 - **Workaround for Bun's empty `getPeerCertificate()`.** After the handshake the driver checks the hostname again using `getPeerCertificate()`, which returns an empty object under Bun, so that check always failed. A custom `checkServerIdentity` skips the second check only when there's no certificate data; the TLS handshake has already verified the CA and hostname.
 - **Prompt files that work on both Bun and Node.** Prompts are read with `fs.readFileSync(new URL('./prompts/…', import.meta.url))`. That resolves relative to the module rather than the working directory, so it works with Bun locally and Node on Vercel.
 - **Vercel serverless setup.** `vercel.json` defines two services: the Vite client, and the Express server, which builds with `prisma generate`. `/api/*` requests are routed to the server and everything else to the client. Files that are only read at runtime aren't detected automatically, so `includeFiles` bundles `prisma/ca.pem` and `llm/prompts/**` into the function. `index.ts` exports the app and only calls `listen()` when `VERCEL` isn't set.
+- **Recovering from an expired `previous_response_id`.** OpenAI keeps stored responses only for a limited time, so a saved ID can stop working. When OpenAI rejects it (HTTP 400 with `param: "previous_response_id"`, e.g. code `previous_response_not_found`), the chat service logs a warning, retries once without it to start a fresh thread, and stores the new response ID. All other OpenAI errors are handled as before.
 
 ## Getting started
 
@@ -129,10 +129,10 @@ The client runs at http://localhost:5173 and sends `/api` requests to the server
 
 ## Known limitations & roadmap
 
-- **Chat memory is kept in memory.** Response IDs are stored in an in-process `Map`, so they're lost on restart and aren't shared between serverless instances. Next step: store them in a database table.
 - **No rate limiting or authentication** on the endpoints that call paid LLMs yet.
 - **No automated tests yet.** Service-level tests with a mocked LLM client are planned.
 - **Summary quality with `tinyllama`** is limited. It's a very small local model, and OpenAI produces noticeably better summaries.
+- **Periodic cleanup of old conversation rows** isn't implemented yet. Rows in `conversations` are never deleted.
 
 ## Author
 
