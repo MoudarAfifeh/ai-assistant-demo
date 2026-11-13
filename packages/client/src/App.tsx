@@ -17,7 +17,7 @@ const TABS = [
       label: 'Review Summarizer',
       icon: HiSparkles,
       description:
-         'Product reviews stored in MySQL. One click summarizes them with a local LLM (Ollama), and the summary is saved so it isn’t regenerated every time.',
+         'Product reviews stored in MySQL. One click summarizes them with an LLM (OpenAI in production, optional local Ollama), and the summary is saved so it isn’t regenerated every time.',
    },
 ] as const;
 
