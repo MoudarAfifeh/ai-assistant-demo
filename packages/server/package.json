@@ -6,7 +6,8 @@
    "scripts": {
       "start": "bun run index.ts",
       "dev": "bun --watch run index.ts",
-      "build": "prisma generate"
+      "build": "prisma generate",
+      "test": "bun test"
    },
    "devDependencies": {
       "@types/bun": "latest",

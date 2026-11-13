@@ -1,6 +1,7 @@
 import fs from 'fs';
 import { conversationRepository } from '../repositories/conversation.repository';
-import { isInvalidPreviousResponseError, llmClient } from '../llm/client';
+import { llmClient } from '../llm/client';
+import { isInvalidPreviousResponseError } from '../llm/errors';
 
 // Read prompts with fs + import.meta.url so this works on Bun locally and
 // on Node.js (Vercel), and so Vercel's file tracing bundles these files.

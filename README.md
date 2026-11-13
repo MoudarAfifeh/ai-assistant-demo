@@ -2,6 +2,7 @@
 
 A full-stack TypeScript app with two production-style LLM features: a **customer-support chatbot with conversation memory** and an **AI product-review summarizer with database caching**.
 
+[![CI](https://github.com/MoudarAfifeh/ai-assistant-demo/actions/workflows/ci.yml/badge.svg)](https://github.com/MoudarAfifeh/ai-assistant-demo/actions/workflows/ci.yml)
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React_19-20232A?logo=react&logoColor=61DAFB)](https://react.dev/)
 [![Bun](https://img.shields.io/badge/Bun-000000?logo=bun&logoColor=white)](https://bun.com/)
@@ -138,10 +139,25 @@ bun run dev
 
 The client runs at http://localhost:5173 and sends `/api` requests to the server at http://localhost:3000.
 
+## Running tests
+
+```bash
+bun run test
+```
+
+Server tests use `bun test` and run in about a second with no database, OpenAI, Ollama or Upstash: `tests/setup.ts` stubs Prisma and points OpenAI at an address that can't connect, and repositories and the LLM client are mocked with `spyOn`. They cover:
+
+- the summary cache (hit, miss, and 7-day expiry against a fake table)
+- the summarize endpoint's 404 and 400 responses
+- chat memory (storing and reusing `previous_response_id`, and the expired-ID fallback)
+- Zod validation of chat requests
+- all rate limits
+
+The tests run in the Husky pre-commit hook, and [GitHub Actions](.github/workflows/ci.yml) runs install, `prisma generate`, type checks, client build, lint and tests on every push and pull request.
+
 ## Known limitations & roadmap
 
 - **No authentication** on the endpoints that call paid LLMs. They're protected by per-IP and global rate limits only.
-- **No automated tests yet.** Service-level tests with a mocked LLM client are planned.
 - **Summary quality with `tinyllama`** is limited. It's a very small local model, and OpenAI produces noticeably better summaries.
 - **Periodic cleanup of old conversation rows** isn't implemented yet. Rows in `conversations` are never deleted.
 
